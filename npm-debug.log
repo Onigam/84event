@@ -1,5 +1,5 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'start' ]
 2 info using npm@3.9.6
 3 info using node@v0.12.0
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
@@ -7,7 +7,7 @@
 6 silly lifecycle 84events@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle 84events@1.0.0~start: 84events@1.0.0
 8 verbose lifecycle 84events@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle 84events@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/castr/Dev/84events/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/castr/Dev/SDK/android-sdk-macosx/platform-tools:/Users/castr/Dev/SDK/android-sdk-macosx/tools:/Users/castr/Dev/SDK/android-sdk-macosx/build-tools:/Users/castr/.manymo/bin
+9 verbose lifecycle 84events@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/castr/Dev/84events/node_modules/.bin:/usr/local/bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/castr/Dev/84events/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/castr/Dev/SDK/android-sdk-macosx/platform-tools:/Users/castr/Dev/SDK/android-sdk-macosx/tools:/Users/castr/Dev/SDK/android-sdk-macosx/build-tools:/Users/castr/.manymo/bin
 10 verbose lifecycle 84events@1.0.0~start: CWD: /Users/castr/Dev/84events
 11 silly lifecycle 84events@1.0.0~start: Args: [ '-c', 'NODE_PATH=$NODE_PATH:./shared node --harmony .' ]
 12 silly lifecycle 84events@1.0.0~start: Returned: code: 1  signal: null
@@ -23,7 +23,7 @@
 15 verbose pkgid 84events@1.0.0
 16 verbose cwd /Users/castr/Dev/84events
 17 error Darwin 14.5.0
-18 error argv "node" "/usr/local/bin/npm" "start"
+18 error argv "node" "/usr/local/bin/npm" "run" "start"
 19 error node v0.12.0
 20 error npm  v3.9.6
 21 error code ELIFECYCLE
