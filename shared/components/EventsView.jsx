@@ -8,19 +8,24 @@ export default class EventsView extends React.Component {
           this.props.events.map( (event, index) => {
             return (
               <div key={index}>
-                <img src={event.coverPicture}>
+                <img src={event.eventCoverPicture}>
                 </img>
                 <div>
-                  {event.name}
+                  {event.eventName}
                 </div>
                 <div>
-                  {event.startTime}
+                  {event.eventDescription}
                 </div>
                 <div>
-                  {event.location}
+                  {event.eventStarttime}
                 </div>
                 <div>
-                  {event.distance}
+                  {event.venueLocation.city}
+                  {event.venueLocation.street}
+                  {event.venueLocation.zip}
+                </div>
+                <div>
+                  {event.eventDistance}
                 </div>
               </div>
             );
