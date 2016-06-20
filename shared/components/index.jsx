@@ -1,11 +1,12 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
 
 export default class App extends React.Component {
+
+
   render() {
     return (
       <div id="app-view">
-        <h1>84 events</h1>
-        <hr />
         {this.props.children}
       </div>
     );

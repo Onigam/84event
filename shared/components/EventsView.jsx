@@ -1,4 +1,6 @@
 import React from 'react';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {cardStyle} from './common_style.js';
 
 export default class EventsView extends React.Component {
   render() {
@@ -7,27 +9,27 @@ export default class EventsView extends React.Component {
         {
           this.props.events.map( (event, index) => {
             return (
-              <div key={index}>
+              <Card style={cardStyle}>
+              <CardMedia
+                overlay={<CardTitle title={event.eventName} />}>
                 <img src={event.eventCoverPicture}>
                 </img>
-                <div>
-                  {event.eventName}
-                </div>
-                <div>
+                </CardMedia>
+                <CardText>
                   {event.eventDescription}
-                </div>
+                </CardText>
                 <div>
                   {event.eventStarttime}
                 </div>
-                <div>
+                <CardText>
                   {event.venueLocation.city}
                   {event.venueLocation.street}
                   {event.venueLocation.zip}
-                </div>
+                </CardText>
                 <div>
                   {event.eventDistance}
                 </div>
-              </div>
+              </Card>
             );
           })
         }
