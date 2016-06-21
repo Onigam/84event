@@ -1,5 +1,6 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import {skewStyle} from './common_style.js';
 
 export default class EventsForm extends React.Component {
   getEvents = () => {
@@ -7,6 +8,8 @@ export default class EventsForm extends React.Component {
         this.props.getEvents(position.coords);
     });
   }
+
+
 
   render() {
     return (

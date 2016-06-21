@@ -14,6 +14,11 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import Subheader from 'material-ui/Subheader';
 
+const muiTheme = getMuiTheme({
+  cardTitle: {
+    textColor: "white"
+  }
+});
 
 @connect(state => ({ events: state.events }))
 export default class Home extends React.Component {
@@ -33,7 +38,7 @@ export default class Home extends React.Component {
      }
 
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
 
       <div id="events-list" style={containerStyle}>
 

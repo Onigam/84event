@@ -37,7 +37,7 @@ app.use((req, res) => {
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
       </head>
-      <body style="background-color:rgb(26, 188, 156);">
+      <body>
         <div id="react-view">${componentHTML}</div>
         <script type="application/javascript" src="/bundle.js"></script>
       </body>
