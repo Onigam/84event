@@ -11,7 +11,7 @@ export default class EventsForm extends React.Component {
   render() {
     return (
       <div id="events-form">
-      <RaisedButton label="Get all events around me!" onClick={this.getEvents} />
+      <RaisedButton secondary={true} label="Get all events around me!" onClick={this.getEvents} />
       </div>
     );
   }

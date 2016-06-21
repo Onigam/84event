@@ -20,7 +20,6 @@ app.use((req, res) => {
       return res.status(500).end('Internal server error');
     }
     if (!renderProps) return res.status(404).end('Not found.');
-
     const InitialComponent = (
       <Provider store={store}>
         <RoutingContext {...renderProps} />
@@ -38,7 +37,7 @@ app.use((req, res) => {
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
       </head>
-      <body>
+      <body style="background-color:rgb(26, 188, 156);">
         <div id="react-view">${componentHTML}</div>
         <script type="application/javascript" src="/bundle.js"></script>
       </body>
