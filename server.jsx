@@ -6,13 +6,13 @@ import createHistory             from 'history/lib/createHistory';
 import routes                    from 'routes';
 import { createStore, combineReducers } from 'redux';
 import { Provider }                     from 'react-redux';
-import * as reducers                    from 'reducers';
+import { events, location }                   from 'reducers';
 
 const app = express();
 
 app.use((req, res) => {
   const location = req.path;
-  const reducer  = combineReducers(reducers);
+  const reducer  = combineReducers({ events, location });
   const store    = createStore(reducer);
   match({ routes, location }, (err, redirectLocation, renderProps) => {
     if (err) {
@@ -37,7 +37,7 @@ app.use((req, res) => {
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
       </head>
-      <body>
+      <body style="position:absolute;width:100%;height:100%;padding: 0; margin:0;">
         <div id="react-view">${componentHTML}</div>
         <script type="application/javascript" src="/bundle.js"></script>
       </body>

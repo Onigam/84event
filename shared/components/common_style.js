@@ -37,7 +37,8 @@ const cardPlaceStyle = {
   margin: '5px auto'
 };
 const containerStyle = {
-  height: '300px',
+  height: '100%',
+  width: '100%',
   textAlign: 'center'
 };
 

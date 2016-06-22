@@ -10,7 +10,6 @@ const googleMapStyle = {
 };
 
 const containerStyle = {
-  height: '300px',
   textAlign: 'center'
 };
 
