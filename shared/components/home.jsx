@@ -7,7 +7,7 @@ import * as LocationActions       from 'actions/LocationActions';
 import { connect }            from 'react-redux';
 import {green100, green500, green700} from 'material-ui/styles/colors';
 import GoogleMap from 'google-map-react';
-import {googleMapStyle, containerStyle} from './home_style.js';
+import {googleMapStyle, containerStyle, blueStyle, greenStyle, yellowStyle, turquoiseStyle, pinkStyle} from './home_style.js';
 import {cardStyle} from './common_style.js';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -27,23 +27,34 @@ export default class Home extends React.Component {
     zoom: 9
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.locationSearch !== nextProps.locationSearch) {
+      this.props.dispatch(EventsActions.getEvents({ lat: this.props.locationSearch.get("lat"), lng: this.props.locationSearch.get("lng")}));
+    }
+  }
+
+
   render() {
      const { events, locationSearch, dispatch, getEvents, subscribe } = this.props;
 
-     subscribe(function(nextProp) {
-             debbuger;
-             // EventsActions.getEvents(coordinates);
-     });
+
+     const defaultLocation = {lat: 59.938043, lng: 30.337157};
+     dispatch(LocationActions.locationChanged(defaultLocation));
 
      const _onClick = ({x, y, lat, lng, event}) => {
        dispatch(LocationActions.locationChanged({lat : lat, lng : lng}));
      }
 
+
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
 
       <div id="containerStyle" style={containerStyle}>
-      <h1>84events</h1>
+      <h1>
+        <span style={blueStyle}>84</span>
+        <span style={turquoiseStyle}>events</span>
+      </h1>
+
       <Card style={cardStyle}>
       <GoogleMap
         style={googleMapStyle}
@@ -52,7 +63,7 @@ export default class Home extends React.Component {
           key: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
           language: 'fr'
         }}
-        defaultCenter={{lat: 59.938043, lng: 30.337157}}
+        defaultCenter={defaultLocation}
         defaultZoom={this.props.zoom}>
       </GoogleMap>
       </Card>

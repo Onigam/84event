@@ -13,4 +13,25 @@ const containerStyle = {
   textAlign: 'center'
 };
 
-export {googleMapStyle,containerStyle};
+const blueStyle = {
+  color: 'rgb(0, 188, 212)'
+};
+
+const greenStyle = {
+  color: '#2ecc71'
+};
+
+const yellowStyle = {
+  color: 'rgb(241, 196, 15)'
+};
+
+const turquoiseStyle = {
+  color: 'rgb(26, 188, 156)'
+};
+
+const pinkStyle = {
+  color: 'rgb(255, 64, 129)'
+};
+
+
+export {googleMapStyle,containerStyle, blueStyle, greenStyle, yellowStyle, turquoiseStyle, pinkStyle};
