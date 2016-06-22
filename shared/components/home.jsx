@@ -28,7 +28,13 @@ export default class Home extends React.Component {
   };
 
   render() {
-     const { events, locationSearch, dispatch, getEvents } = this.props;
+     const { events, locationSearch, dispatch, getEvents, subscribe } = this.props;
+
+     subscribe(function(nextProp) {
+             debbuger;
+             // EventsActions.getEvents(coordinates);
+     });
+
      const _onClick = ({x, y, lat, lng, event}) => {
        dispatch(LocationActions.locationChanged({lat : lat, lng : lng}));
      }
@@ -46,7 +52,7 @@ export default class Home extends React.Component {
           key: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
           language: 'fr'
         }}
-        defaultCenter={lat: 59.938043, lng: 30.337157}
+        defaultCenter={{lat: 59.938043, lng: 30.337157}}
         defaultZoom={this.props.zoom}>
       </GoogleMap>
       </Card>
