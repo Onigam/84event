@@ -21,6 +21,9 @@ export default class EventsView extends React.Component {
                   <div style={cardTextStyle}>
                     {event.eventDescription}
                   </div>
+                  <div style={cardTextStyle}>
+                    ...
+                  </div>
                   <div style={cardDateStyle}>
                     {event.eventStarttime}
                   </div>

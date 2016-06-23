@@ -28,8 +28,9 @@ export default class Home extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
+    debugger
     if (this.props.locationSearch !== nextProps.locationSearch) {
-      this.props.dispatch(EventsActions.getEvents({ lat: this.props.locationSearch.get("lat"), lng: this.props.locationSearch.get("lng")}));
+      this.props.dispatch(EventsActions.getEvents({ lat: nextProps.locationSearch.get("lat"), lng: nextProps.locationSearch.get("lng")}));
     }
   }
 
@@ -39,7 +40,7 @@ export default class Home extends React.Component {
 
 
      const defaultLocation = {lat: 59.938043, lng: 30.337157};
-     dispatch(LocationActions.locationChanged(defaultLocation));
+
 
      const _onClick = ({x, y, lat, lng, event}) => {
        dispatch(LocationActions.locationChanged({lat : lat, lng : lng}));
