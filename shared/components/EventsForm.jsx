@@ -8,7 +8,7 @@ import { connect }            from 'react-redux';
 export default class EventsForm extends React.Component {
   aroundMe = () => {
     navigator.geolocation.getCurrentPosition( (position) => {
-      this.props.dispatch(LocationActions.locationChanged(position.coords));
+      this.props.dispatch(LocationActions.locationChanged({ lat: position.coords.latitude , lng: position.coords.longitude}));
     });
   }
 

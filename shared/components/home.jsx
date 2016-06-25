@@ -28,9 +28,12 @@ export default class Home extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    debugger
-    if (this.props.locationSearch !== nextProps.locationSearch) {
-      this.props.dispatch(EventsActions.getEvents({ lat: nextProps.locationSearch.get("lat"), lng: nextProps.locationSearch.get("lng")}));
+    if (nextProps.locationSearch && this.props.locationSearch !== nextProps.locationSearch) {
+      if (nextProps.locationSearch.has("lat") && nextProps.locationSearch.has("lng")) {
+        const newLocation = { lat: nextProps.locationSearch.get("lat"), lng: nextProps.locationSearch.get("lng")};
+        console.log("newLocation:"+ newLocation.lat + " - " + newLocation.lng);
+        this.props.dispatch(EventsActions.getEvents(newLocation));
+      }
     }
   }
 
@@ -52,8 +55,7 @@ export default class Home extends React.Component {
 
       <div id="containerStyle" style={containerStyle}>
       <h1>
-        <span style={blueStyle}>84</span>
-        <span style={turquoiseStyle}>events</span>
+        <span style={turquoiseStyle}>Spouti</span>
       </h1>
 
       <Card style={cardStyle}>

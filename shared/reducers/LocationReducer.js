@@ -3,9 +3,10 @@ const defaultState = Immutable.Map({lat: 59.938043, lng: 30.337157, radius: 2500
 export default function locationSearchReducer(state = defaultState, action) {
   switch(action.type) {
     case 'LOCATION_CHANGED':
-      return state.merge(action.coordinates);
+    debugger
+      return Immutable.fromJS({ lat : action.coordinates.lat, lng : action.coordinates.lng, radius : state.get("radius")});
     case 'RADIUS_CHANGED':
-      return state.merge(action.coordinates);
+      return Immutable.fromJS({radius: action.radius, lat: state.get("lat"), lng: state.get("lng")});
     default:
       return state;
   }

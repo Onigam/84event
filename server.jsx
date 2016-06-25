@@ -32,7 +32,7 @@ app.use((req, res) => {
     <html>
       <head>
         <meta charset="utf-8">
-        <title>84events feeds</title>
+        <title>Spouti feeds</title>
         <script type="application/javascript">
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
