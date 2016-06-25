@@ -1,6 +1,7 @@
 import React                  from 'react';
 import EventsView             from 'components/EventsView';
 import EventsForm             from 'components/EventsForm';
+import SearchRadius           from 'components/map/SearchRadius';
 import { bindActionCreators } from 'redux';
 import * as EventsActions       from 'actions/EventsActions';
 import * as LocationActions       from 'actions/LocationActions';
@@ -14,6 +15,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import Subheader from 'material-ui/Subheader';
+import distance from 'gps-distance';
 
 const muiTheme = getMuiTheme({
   cardTitle: {
@@ -24,8 +26,8 @@ const muiTheme = getMuiTheme({
 @connect(state => ({ events: state.events, locationSearch: state.locationSearch }))
 export default class Home extends React.Component {
     static defaultProps = {
-    zoom: 9
-  };
+    zoom: 12
+    };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.locationSearch && this.props.locationSearch !== nextProps.locationSearch) {
@@ -40,14 +42,34 @@ export default class Home extends React.Component {
 
   render() {
      const { events, locationSearch, dispatch, getEvents, subscribe } = this.props;
-
-
-     const defaultLocation = {lat: 59.938043, lng: 30.337157};
-
+     let radiusLocation = locationSearch && locationSearch.has("lat") ? {lat: locationSearch.get("lat") , lng: locationSearch.get("lng")} : {lat: 59.938043, lng: 30.337157};
 
      const _onClick = ({x, y, lat, lng, event}) => {
        dispatch(LocationActions.locationChanged({lat : lat, lng : lng}));
      }
+
+     const _onChange = (props) => {
+       let diagoInKm = distance(props.bounds.nw.lat, props.bounds.nw.lng, props.bounds.se.lat, props.bounds.se.lng);
+       let diagoInPx = Math.sqrt(Math.pow(props.size.height,2),Math.pow(props.size.width,2));
+       let radiusInM = locationSearch.get("radius");
+       let radiusInPx = Math.round((radiusInM*diagoInPx) / (diagoInKm*1000));
+       dispatch(LocationActions.radiusStyleChanged({
+         width: radiusInPx,
+         height: radiusInPx,
+         left: -radiusInPx/2,
+         top: -radiusInPx/2,
+         position: 'absolute',
+         border: '3px solid rgb(0, 188, 212)',
+         boxSizing: 'border-box',
+         borderRadius: 300,
+         backgroundColor: 'rgba(0, 188, 212, 0.6)',
+         textAlign: 'center'
+       }));
+      }
+
+      let radiusStyle = JSON.parse(JSON.stringify(locationSearch.has("radiusStyle") ? locationSearch.get("radiusStyle") : {}));
+      console.log(radiusStyle);
+      debugger
 
 
     return (
@@ -62,12 +84,15 @@ export default class Home extends React.Component {
       <GoogleMap
         style={googleMapStyle}
         onClick={_onClick}
+        onChange={_onChange}
         bootstrapURLKeys={{
           key: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
           language: 'fr'
         }}
-        defaultCenter={defaultLocation}
+        defaultCenter={{lat: 59.938043, lng: 30.337157}}
         defaultZoom={this.props.zoom}>
+        <div lat={radiusLocation.lat} lng={radiusLocation.lng} style={radiusStyle}>
+        </div>
       </GoogleMap>
       </Card>
         <EventsForm

@@ -5,3 +5,9 @@ export function locationChanged(coordinates) {
     coordinates
   }
 }
+export function radiusStyleChanged(radiusStyle) {
+  return {
+    type: 'RADIUS_STYLE_CHANGED',
+    radiusStyle
+  }
+}
