@@ -77,7 +77,7 @@ export default class Home extends React.Component {
 
       <div id="containerStyle" style={containerStyle}>
       <h1>
-        <span style={turquoiseStyle}>Spouti</span>
+        <span style={turquoiseStyle}>84event</span>
       </h1>
 
       <Card style={cardStyle}>
