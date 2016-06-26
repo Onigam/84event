@@ -3,10 +3,13 @@ const googleMapStyle = {
   // it's on you to set object origin to 0,0 coordinates
   position: 'relative',
   width: '100%',
-  height: '300px',
+  maxWidth: '600px',
+  margin: 'auto',
+  height: '200px',
   boxSizing: 'border-box',
-  border: '1px solid rgb(0, 188, 212)',
+  border: '4px solid rgb(0, 188, 212)',
   borderRadius: '2px',
+  marginBottom: '15px'
 };
 
 const containerStyle = {

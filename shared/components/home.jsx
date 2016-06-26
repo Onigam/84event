@@ -51,7 +51,7 @@ export default class Home extends React.Component {
      const _onChange = (props) => {
        let diagoInKm = distance(props.bounds.nw.lat, props.bounds.nw.lng, props.bounds.se.lat, props.bounds.se.lng);
        let diagoInPx = Math.sqrt(Math.pow(props.size.height,2),Math.pow(props.size.width,2));
-       let radiusInM = locationSearch.get("radius");
+       let radiusInM = locationSearch.get("radius")*4;
        let radiusInPx = Math.round((radiusInM*diagoInPx) / (diagoInKm*1000));
        dispatch(LocationActions.radiusStyleChanged({
          width: radiusInPx,
@@ -59,15 +59,15 @@ export default class Home extends React.Component {
          left: -radiusInPx/2,
          top: -radiusInPx/2,
          position: 'absolute',
-         border: '3px solid rgb(0, 188, 212)',
+         border: '3px dashed rgb(0, 188, 212)',
          boxSizing: 'border-box',
          borderRadius: 300,
-         backgroundColor: 'rgba(0, 188, 212, 0.6)',
+         backgroundColor: 'rgba(0, 188, 212, 0.4)',
          textAlign: 'center'
        }));
       }
 
-      let radiusStyle = JSON.parse(JSON.stringify(locationSearch.has("radiusStyle") ? locationSearch.get("radiusStyle") : {}));
+      let radiusStyle = JSON.parse(JSON.stringify(locationSearch && locationSearch.has("radiusStyle") ? locationSearch.get("radiusStyle") : {}));
       console.log(radiusStyle);
       debugger
 
@@ -80,7 +80,6 @@ export default class Home extends React.Component {
         <span style={turquoiseStyle}>84event</span>
       </h1>
 
-      <Card style={cardStyle}>
       <GoogleMap
         style={googleMapStyle}
         onClick={_onClick}
@@ -89,12 +88,11 @@ export default class Home extends React.Component {
           key: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
           language: 'fr'
         }}
-        defaultCenter={{lat: 59.938043, lng: 30.337157}}
+        defaultCenter={{lat: locationSearch.has('lat') ? locationSearch.get('lat') : 59.938043, lng: locationSearch.has('lng') ? locationSearch.get('lng') : 30.337157}}
         defaultZoom={this.props.zoom}>
         <div lat={radiusLocation.lat} lng={radiusLocation.lng} style={radiusStyle}>
         </div>
       </GoogleMap>
-      </Card>
         <EventsForm
           {...bindActionCreators(EventsActions, dispatch)} />
         <EventsView events={events}
