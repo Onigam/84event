@@ -53,24 +53,22 @@ export default class Home extends React.Component {
        let diagoInPx = Math.sqrt(Math.pow(props.size.height,2),Math.pow(props.size.width,2));
        let radiusInM = locationSearch.get("radius");
        let radiusInPx = Math.round((radiusInM*diagoInPx) / (diagoInKm*1000));
+       debugger
        dispatch(LocationActions.radiusStyleChanged({
-         width: radiusInPx,
-         height: radiusInPx,
+         width: radiusInPx*2,
+         height: radiusInPx*2,
          left: -radiusInPx/2,
          top: -radiusInPx/2,
          position: 'absolute',
-         border: '3px solid rgb(0, 188, 212)',
+         border: '3px dashed rgb(255, 64, 129)',
          boxSizing: 'border-box',
          borderRadius: 300,
-         backgroundColor: 'rgba(0, 188, 212, 0.6)',
+         backgroundColor: 'rgba(0, 188, 212, 0.3)',
          textAlign: 'center'
        }));
       }
 
-      let radiusStyle = JSON.parse(JSON.stringify(locationSearch.has("radiusStyle") ? locationSearch.get("radiusStyle") : {}));
-      console.log(radiusStyle);
-      debugger
-
+      let radiusStyle = JSON.parse(JSON.stringify(locationSearch != undefined && locationSearch.has("radiusStyle") ? locationSearch.get("radiusStyle") : {}));
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>

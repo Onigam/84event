@@ -3,9 +3,9 @@ const googleMapStyle = {
   // it's on you to set object origin to 0,0 coordinates
   position: 'relative',
   width: '100%',
-  height: '300px',
+  height: '250px',
   boxSizing: 'border-box',
-  border: '1px solid rgb(0, 188, 212)',
+  border: '6px solid rgb(0, 188, 212)',
   borderRadius: '2px',
 };
 
