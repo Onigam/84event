@@ -53,7 +53,6 @@ export default class Home extends React.Component {
        let diagoInPx = Math.sqrt(Math.pow(props.size.height,2),Math.pow(props.size.width,2));
        let radiusInM = locationSearch.get("radius");
        let radiusInPx = Math.round((radiusInM*diagoInPx) / (diagoInKm*1000));
-       debugger
        dispatch(LocationActions.radiusStyleChanged({
          width: radiusInPx*2,
          height: radiusInPx*2,
