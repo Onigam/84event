@@ -53,9 +53,10 @@ export default class Home extends React.Component {
        let diagoInPx = Math.sqrt(Math.pow(props.size.height,2),Math.pow(props.size.width,2));
        let radiusInM = locationSearch.get("radius")*4;
        let radiusInPx = Math.round((radiusInM*diagoInPx) / (diagoInKm*1000));
+
        dispatch(LocationActions.radiusStyleChanged({
-         width: radiusInPx,
-         height: radiusInPx,
+         width: radiusInPx*2,
+         height: radiusInPx*2,
          left: -radiusInPx/2,
          top: -radiusInPx/2,
          position: 'absolute',
@@ -66,18 +67,17 @@ export default class Home extends React.Component {
          textAlign: 'center'
        }));
       }
-
-      let radiusStyle = JSON.parse(JSON.stringify(locationSearch && locationSearch.has("radiusStyle") ? locationSearch.get("radiusStyle") : {}));
-      console.log(radiusStyle);
-      debugger
-
+      let radiusStyle = {};
+      if (locationSearch) {
+        radiusStyle = JSON.parse(JSON.stringify(locationSearch.has("radiusStyle") ? locationSearch.get("radiusStyle") : {}));
+      }
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
 
       <div id="containerStyle" style={containerStyle}>
       <h1>
-        <span style={turquoiseStyle}>84event</span>
+        <span style={turquoiseStyle}>Spouti</span>
       </h1>
 
       <GoogleMap
@@ -88,7 +88,7 @@ export default class Home extends React.Component {
           key: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
           language: 'fr'
         }}
-        defaultCenter={{lat: locationSearch.has('lat') ? locationSearch.get('lat') : 59.938043, lng: locationSearch.has('lng') ? locationSearch.get('lng') : 30.337157}}
+        defaultCenter={{lat:  59.938043, lng: 30.337157}}
         defaultZoom={this.props.zoom}>
         <div lat={radiusLocation.lat} lng={radiusLocation.lng} style={radiusStyle}>
         </div>
