@@ -2,7 +2,8 @@ const googleMapStyle = {
   // initially any map object has left top corner at lat lng coordinates
   // it's on you to set object origin to 0,0 coordinates
   position: 'relative',
-  width: '100%',
+  maxWidth: '600px',
+  margin: 'auto',
   height: '250px',
   boxSizing: 'border-box',
   border: '6px solid rgb(0, 188, 212)',

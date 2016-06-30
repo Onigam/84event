@@ -45,13 +45,15 @@ export default class Home extends React.Component {
      let radiusLocation = locationSearch && locationSearch.has("lat") ? {lat: locationSearch.get("lat") , lng: locationSearch.get("lng")} : {lat: 59.938043, lng: 30.337157};
 
      const _onClick = ({x, y, lat, lng, event}) => {
+       debugger
        dispatch(LocationActions.locationChanged({lat : lat, lng : lng}));
      }
 
      const _onChange = (props) => {
        let diagoInKm = distance(props.bounds.nw.lat, props.bounds.nw.lng, props.bounds.se.lat, props.bounds.se.lng);
        let diagoInPx = Math.sqrt(Math.pow(props.size.height,2),Math.pow(props.size.width,2));
-       let radiusInM = locationSearch.get("radius")*4;
+       let radiusInM = locationSearch.get("radius")*2;
+       debugger;
        let radiusInPx = Math.round((radiusInM*diagoInPx) / (diagoInKm*1000));
 
        dispatch(LocationActions.radiusStyleChanged({
@@ -88,7 +90,7 @@ export default class Home extends React.Component {
           key: "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo",
           language: 'fr'
         }}
-        defaultCenter={{lat:  59.938043, lng: 30.337157}}
+        center={radiusLocation}
         defaultZoom={this.props.zoom}>
         <div lat={radiusLocation.lat} lng={radiusLocation.lng} style={radiusStyle}>
         </div>

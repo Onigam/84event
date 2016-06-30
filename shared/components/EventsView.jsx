@@ -1,8 +1,10 @@
 import React from 'react';
+import moment from 'moment';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
 import {cardStyle, cardTextStyle, cardDateStyle, cardPlaceStyle, cardDistanceStyle} from './common_style.js';
+
 
 export default class EventsView extends React.Component {
   render() {
@@ -25,7 +27,7 @@ export default class EventsView extends React.Component {
                     ...
                   </div>
                   <div style={cardDateStyle}>
-                    {event.eventStarttime}
+                    {moment(event.eventStarttime).format('MMMM Do YYYY, h:mm a')}
                   </div>
                   <div style={cardPlaceStyle}>
                     {event.venueLocation.city}&nbsp;
