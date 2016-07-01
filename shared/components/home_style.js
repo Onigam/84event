@@ -6,7 +6,6 @@ const googleMapStyle = {
   margin: 'auto',
   height: '250px',
   boxSizing: 'border-box',
-  border: '6px solid rgb(0, 188, 212)',
   borderRadius: '2px',
   marginBottom: '15px'
 };
