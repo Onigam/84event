@@ -9,7 +9,7 @@ import { Provider }                     from 'react-redux';
 import { events, location }                   from 'reducers';
 
 const app = express();
-
+app.use('/dist', express.static('dist'));
 app.use((req, res) => {
   const location = req.path;
   const reducer  = combineReducers({ events, location });
@@ -39,7 +39,7 @@ app.use((req, res) => {
       </head>
       <body style="position:absolute;width:100%;height:100%;padding: 0; margin:0;">
         <div id="react-view">${componentHTML}</div>
-        <script type="application/javascript" src="/bundle.js"></script>
+        <script type="application/javascript" src="dist/bundle.js"></script>
       </body>
      </html>
 `
