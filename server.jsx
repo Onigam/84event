@@ -32,7 +32,9 @@ app.use((req, res) => {
     <html>
       <head>
         <meta charset="utf-8">
-        <title>84event feed</title>
+        <meta name="description" content="Get events by location">
+        <meta name="keywords" content="Events, location, facebook">
+        <title>Spouti</title>
         <script type="application/javascript">
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
