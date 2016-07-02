@@ -16,6 +16,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import Subheader from 'material-ui/Subheader';
 import distance from 'gps-distance';
+import FlatButton from 'material-ui/FlatButton';
 
 const muiTheme = getMuiTheme({
   cardTitle: {
@@ -76,9 +77,7 @@ export default class Home extends React.Component {
       <MuiThemeProvider muiTheme={muiTheme}>
 
       <div id="containerStyle" style={containerStyle}>
-      <h1>
-        <span style={blueStyle}>Spouti</span>
-      </h1>
+      <h1>Spouti</h1>
 
       <GoogleMap
         style={googleMapStyle}

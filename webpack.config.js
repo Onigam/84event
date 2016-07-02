@@ -9,7 +9,7 @@ module.exports = {
   ],
   output: {
     path:     path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'dist/bundle.js'
   },
   resolve: {
     modulesDirectories: ['node_modules', 'shared'],
